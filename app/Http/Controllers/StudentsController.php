@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\StudentRequest;
 use App\Models\Achievement;
 use App\Models\Student;
@@ -22,7 +23,7 @@ class StudentsController extends Controller
         return view('students.create');
     }
 
-    public function store(StudentRequest $request)
+    public function store(StudentRequest $request, ImageUploadHandler $uploader)
     {
         // 保存学生信息
         $student = new Student();
@@ -33,7 +34,15 @@ class StudentsController extends Controller
             'count' => ($request->chinese + $request->math + $request->english),
         ]);
         $student->name = $request->name;
-
+        if ($request->avatar) {
+            $result = $uploader->save($request->avatar, 'avatars', 1);
+            if ($result) {
+                $student->avatar = $result['path'];
+            }
+        } else {
+            // 默认头像
+            $student->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        }
 
         $student->save();
         $student->achievement()->save($achievement);

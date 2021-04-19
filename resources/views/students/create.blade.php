@@ -9,7 +9,7 @@
           <div class="card-header">添加学生信息</div>
 
           <div class="card-body">
-            <form method="POST" action="{{ route('students.store') }}">
+            <form method="POST" action="{{ route('students.store') }}" enctype="multipart/form-data">
               @csrf
 
               <div class="form-group row">
@@ -60,6 +60,20 @@
                   <input id="english" type="text" class="form-control @error('english') is-invalid @enderror" name="english" value="{{ old('english') }}" required autocomplete="current-english">
 
                   @error('english')
+                  <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                  @enderror
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="avatar" class="col-md-4 col-form-label text-md-right">用户头像</label>
+
+                <div class="col-md-6">
+                  <input id="avatar" type="file" class="form-control-file @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="current-english">
+
+                  @error('avatar')
                   <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
