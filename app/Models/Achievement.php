@@ -12,4 +12,9 @@ class Achievement extends Model
     protected $fillable = [
         'student_id', 'chinese', 'math', 'english', 'count',
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

@@ -12,4 +12,9 @@ class Student extends Model
     protected $fillable = [
         'name', 'avatar'
     ];
+
+    public function achievement()
+    {
+        return $this->hasOne(Achievement::class);
+    }
 }
