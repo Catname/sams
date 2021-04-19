@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>@yield('title', '学生成绩管理系统')</title>
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
 
