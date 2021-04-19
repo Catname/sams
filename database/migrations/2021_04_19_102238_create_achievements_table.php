@@ -22,6 +22,8 @@ class CreateAchievementsTable extends Migration
             $table->decimal('count', 4, 1)->comment('总成绩');
             $table->softDeletes();
             $table->timestamps();
+            // 当 student_id 对应的 student 表数据被删除时，删除其成绩
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }
 
