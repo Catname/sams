@@ -1,14 +1,23 @@
 @extends('layouts.default')
-@section('title', '注册')
+@section('title', '学生列表')
 
 @section('content')
-  <h1>学生列表</h1>
+
+  <div class="row">
+    <div class="col-md-10">
+      <h1>学生列表</h1>
+    </div>
+    <div class="col-md-2 col-md-offset-1">
+      <a href="{{ route('students.create') }}"><button type="button" class="btn btn-info">添加学生</button></a>
+    </div>
+  </div>
+  <hr>
   <div class="row mb-5">
     <div class="col-lg-12 col-md-12 student-list">
       <div class="card ">
         <div class="card-body">
           <div>
-            <table class="table">
+            <table class="table table-hover">
               <thead>
               <tr>
                 <th>ID</th>
@@ -38,9 +47,10 @@
                     <td>{{ $achievement->student->created_at->diffForHumans() }}</td>
                     <td>
 
-                      <form action="{{ route('students.destroy', $achievement->student->id) }}" method="DELETE" onsubmit="return confirm('您确定要删除：{{$achievement->student->name}} 同学吗？');">
+                      <form action="{{ route('students.destroy', $achievement->student->id) }}" method="POST" onsubmit="return confirm('您确定要删除：{{$achievement->student->name}} 同学吗？');">
                         {{ csrf_field() }}
-                        <button class="btn btn-block btn-danger" type="submit" name="button"><i class="fa fa-trash"></i></button>
+                        {{ method_field('DELETE') }}
+                        <button class="btn btn-block btn-danger" type="submit" name="button"><i class="fa fa-trash fa-lg"></i></button>
                       </form>
                     </td>
                   </tr>
