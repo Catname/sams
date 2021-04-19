@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Illuminate\Pagination\Paginator::useBootstrap();
+        // 注册观察器
         Student::observe(StudentObserver::class);
     }
 }

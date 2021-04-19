@@ -28,7 +28,7 @@ class AchievementFactory extends Factory
         $count = $chinese + $math + $english;
 
         return [
-            'student_id' => Student::factory(),
+            'student_id' => Student::factory(),// 关联操作
             'chinese' => $chinese,
             'math' => $math,
             'english' => $english,

@@ -30,7 +30,6 @@ class StudentFactory extends Factory
             'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png',
         ];
 
-        $date_time = $this->faker->date . ' ' . $this->faker->time;
         return [
             'name' => $this->faker->name,
             'avatar' => $this->faker->randomElement($avatars),

@@ -36,6 +36,7 @@ class StudentObserver
      */
     public function deleted(Student $student)
     {
+        // 监听 student 删除事件，在删除 student 之后，删除关联的成绩，反正数据损坏
         $student->achievement()->delete();
     }
 
