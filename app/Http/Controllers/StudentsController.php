@@ -26,9 +26,11 @@ class StudentsController extends Controller
         // 保存学生信息
     }
 
-    public function destroy()
+    public function destroy(Student $student)
     {
         // 删除
+        $student->delete();
+        return back();
 
     }
 
