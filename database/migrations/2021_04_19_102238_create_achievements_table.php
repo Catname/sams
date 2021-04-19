@@ -20,6 +20,7 @@ class CreateAchievementsTable extends Migration
             $table->decimal('math', 4, 1)->comment('数学成绩');
             $table->decimal('english', 4, 1)->comment('英语成绩');
             $table->decimal('count', 4, 1)->comment('总成绩');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

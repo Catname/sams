@@ -17,6 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name')->comment('学生姓名');
             $table->string('avatar')->nullable()->comment('学生头像');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
