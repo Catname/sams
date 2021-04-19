@@ -13,4 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'StaticPagesController@home');
+Route::get('/', 'StaticPagesController@home')->name('home');
+
+Route::resource('students', 'StudentsController')->except([
+    'show', 'edit', 'update'
+]);

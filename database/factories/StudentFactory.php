@@ -34,8 +34,8 @@ class StudentFactory extends Factory
         return [
             'name' => $this->faker->name,
             'avatar' => $this->faker->randomElement($avatars),
-            'created_at' => $date_time,
-            'updated_at' => $date_time,
+            'created_at' => $this->faker->dateTimeBetween('-10 days','-5 days', 'Asia/Shanghai'),
+            'updated_at' => $this->faker->dateTimeBetween('-5 days','now', 'Asia/Shanghai'),
         ];
     }
 }
