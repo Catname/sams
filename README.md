@@ -9,7 +9,12 @@ cd sams/
 cp .env.example .env # 配置一下
 
 composer install
+# 建表并填充测试数据
 php artisan migrate
+php artisan db:seed
+# 或者你也可以
+php artisan migrate:fresh --seed
+
 ```
 
 ## 有以下几个功能
